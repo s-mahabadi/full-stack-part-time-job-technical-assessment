@@ -3,8 +3,8 @@ import ReactJson from 'react-json-view';
 
 const JsonViewer = ({ data }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <div className="overflow-auto max-h-96 border border-gray-200 rounded-md p-4 bg-gray-50">
+    <div className="card">
+      <div style={{ overflow: 'auto', maxHeight: '400px', border: '1px solid #e5e7eb', borderRadius: '0.375rem', padding: '1rem', backgroundColor: '#f9fafb' }}>
         <ReactJson 
           src={data} 
           theme="rjv-default"

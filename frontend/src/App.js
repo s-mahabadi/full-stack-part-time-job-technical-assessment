@@ -115,56 +115,58 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-blue-600 text-white shadow-md">
-        <div className="container mx-auto px-4 py-4">
-          <h1 className="text-2xl font-bold">Word to JSON Converter</h1>
+    <div>
+      <header className="header">
+        <div className="container">
+          <h1 className="title">Word to JSON Converter</h1>
         </div>
       </header>
       
-      <main className="container mx-auto px-4 py-8">
-        {/* Error message */}
-        {error && (
-          <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
-            <p>{error}</p>
-          </div>
-        )}
-        
-        {/* File upload section */}
-        <section className="mb-8">
-          <FileUpload onUpload={handleFileUpload} loading={loading} />
-        </section>
-        
-        {/* File list section */}
-        <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">Uploaded Files</h2>
-          <FileList 
-            files={files} 
-            onDelete={handleDeleteFile} 
-            onConvert={handleConvertToJson}
-            loading={loading}
-          />
-        </section>
-        
-        {/* JSON viewer section */}
-        {jsonData && (
-          <section className="mb-8">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold">JSON Output</h2>
-              <button
-                onClick={handleDownloadJson}
-                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md shadow-sm transition duration-200"
-              >
-                Download JSON
-              </button>
+      <main className="main">
+        <div className="container">
+          {/* Error message */}
+          {error && (
+            <div className="alert alert-error" role="alert">
+              <p>{error}</p>
             </div>
-            <JsonViewer data={jsonData} />
+          )}
+          
+          {/* File upload section */}
+          <section className="mb-8">
+            <FileUpload onUpload={handleFileUpload} loading={loading} />
           </section>
-        )}
+          
+          {/* File list section */}
+          <section className="mb-8">
+            <h2 className="card-title">Uploaded Files</h2>
+            <FileList 
+              files={files} 
+              onDelete={handleDeleteFile} 
+              onConvert={handleConvertToJson}
+              loading={loading}
+            />
+          </section>
+          
+          {/* JSON viewer section */}
+          {jsonData && (
+            <section className="mb-8">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="card-title">JSON Output</h2>
+                <button
+                  onClick={handleDownloadJson}
+                  className="button button-success"
+                >
+                  Download JSON
+                </button>
+              </div>
+              <JsonViewer data={jsonData} />
+            </section>
+          )}
+        </div>
       </main>
       
-      <footer className="bg-gray-100 text-gray-600 py-4 border-t">
-        <div className="container mx-auto px-4 text-center">
+      <footer className="footer">
+        <div className="container">
           <p>Word to JSON Converter &copy; {new Date().getFullYear()}</p>
         </div>
       </footer>

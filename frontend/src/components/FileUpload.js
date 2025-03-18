@@ -28,14 +28,14 @@ const FileUpload = ({ onUpload, loading }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Upload Word Document</h2>
+    <div className="card">
+      <h2 className="card-title">Upload Word Document</h2>
       
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
           <label 
             htmlFor="file-upload" 
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="mb-2"
           >
             Select a .docx file
           </label>
@@ -46,12 +46,7 @@ const FileUpload = ({ onUpload, loading }) => {
             accept=".docx"
             onChange={handleFileChange}
             ref={fileInputRef}
-            className="block w-full text-sm text-gray-500
-                      file:mr-4 file:py-2 file:px-4
-                      file:rounded-md file:border-0
-                      file:text-sm file:font-medium
-                      file:bg-blue-50 file:text-blue-700
-                      hover:file:bg-blue-100"
+            className="input-file"
             disabled={loading}
           />
         </div>
@@ -60,11 +55,7 @@ const FileUpload = ({ onUpload, loading }) => {
           <button
             type="submit"
             disabled={!selectedFile || loading}
-            className={`px-4 py-2 rounded-md shadow-sm text-white
-                      ${!selectedFile || loading
-                        ? 'bg-gray-400 cursor-not-allowed'
-                        : 'bg-blue-600 hover:bg-blue-700 transition duration-200'
-                      }`}
+            className={!selectedFile || loading ? 'button button-disabled' : 'button button-primary'}
           >
             {loading ? 'Uploading...' : 'Upload Document'}
           </button>
