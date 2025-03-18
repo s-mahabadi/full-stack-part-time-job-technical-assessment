@@ -1,102 +1,90 @@
 # Word to JSON Converter
 
-A full-stack application that extracts structured data from Word documents (.docx), converts it to JSON format, and presents it in a user-friendly web interface.
+Hello there! This repo holds a react-app and a fast-api backend that allows conversion of word .docx files to Json format and shows them on the webpage. This was done as part of a technical assessment for interview for a full stack position.
 
-## Project Overview
+![Application Screenshot](page_screenshot.png)
+*The application interface showing file upload, management, and JSON conversion features*
 
-This application allows users to:
-- Upload Word documents (.docx files)
-- View uploaded files in a table format
-- Convert Word documents to structured JSON
-- View the JSON output in a formatted viewer
-- Download the converted JSON
 
 ## Technical Stack
 
 ### Backend
-- **FastAPI**: RESTful API framework for handling file operations and data extraction
-- **Python-docx**: Python library for Word document parsing
-- **MongoDB**: Database for storing file metadata
-- **Python 3.x**: Programming language for backend logic
+- **FastAPI**: A modern, fast API framework that makes building APIs a breeze
+- **Python-docx**: Powerful library that handles all the Word document parsing
+- **MongoDB**: Reliable database for keeping track of your uploaded files
+- **Python 3.x**: The friendly programming language powering it all
 
 ### Frontend
-- **React.js**: Frontend framework for building the user interface
-- **Axios**: HTTP client for API requests
-- **React-JSON-Pretty**: Component for JSON visualization
-- **CSS**: Custom styling for the user interface
+- **React.js**: Creates a smooth, interactive user experience
+- **Axios**: Handles communication with the backend seamlessly
+- **React-JSON-Pretty**: Makes your JSON output beautiful and readable
+- **CSS**: Custom styling to make everything look good
 
 ### DevOps & Deployment
-- **Docker**: Containerization for all components
-- **Docker Compose**: Multi-container orchestration
-- **Nginx**: Web server for serving the frontend and routing API requests
+- **Docker**: Packages everything up so it runs the same way everywhere
+- **Docker Compose**: Orchestrates all the parts working together
+- **Nginx**: Efficiently serves the frontend and routes API requests
 
 ## Project Structure
 
 ```
 project/
 ├── backend/
-│   ├── extract_data.py     # Python script for Word document parsing
-│   ├── main.py             # FastAPI application
-│   ├── requirements.txt    # Python dependencies
-│   ├── Dockerfile          # Docker configuration for backend
-│   └── stored_files/       # Directory for storing uploaded files
+│   ├── extract_data.py     # The magic that parses Word documents
+│   ├── main.py             # The API that handles all requests
+│   ├── requirements.txt    # What the backend needs to run
+│   ├── Dockerfile          # How to containerize the backend
+│   └── stored_files/       # Where your documents are stored
 │
 ├── frontend/
-│   ├── src/                # React application source code
+│   ├── src/                # The React app's source code
 │   ├── public/             # Public assets
-│   ├── package.json        # NPM dependencies
-│   ├── Dockerfile          # Docker configuration for frontend
-│   └── nginx.conf          # Nginx configuration
+│   ├── package.json        # Frontend dependencies
+│   ├── Dockerfile          # How to containerize the frontend
+│   └── nginx.conf          # Web server configuration
 │
-├── docker-compose.yml      # Docker Compose configuration
-└── README.md               # Project documentation
+├── docker-compose.yml      # How everything works together
+└── README.md               # You are here! 👀
 ```
 
-## Setup and Installation
+## Getting Started
 
-### Prerequisites
-- Docker and Docker Compose installed on your system
-- Git for cloning the repository
+### What You'll Need
+- Docker and Docker Compose installed on your computer
+- Git for downloading the code
 
-### Steps to Run
+### Running the Application
 
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/s-mahabadi/full-stack-technical-assessment.git
    cd word-to-json-converter
    ```
 
-2. Start the application using Docker Compose:
+2. Fire up the application:
    ```
    docker-compose up -d
    ```
 
-3. Access the web application at:
+3. Open your browser and go to:
    ```
-   http://localhost
+   http://localhost:80
    ```
 
-## API Endpoints
+That's it! You're ready to start converting documents.
 
-The backend provides the following RESTful API endpoints:
+## API Details
+
+If you're a developer and want to integrate with the system, here are the available endpoints:
 
 - **POST /api/uploadFile**: Upload a Word document
 - **GET /api/getFiles**: Get a list of all uploaded files
-- **DELETE /api/deleteFile/{file_id}**: Delete a specific file by ID
-- **GET /api/WordToJson/{file_id}**: Convert a Word document to JSON format
+- **DELETE /api/deleteFile/{file_id}**: Delete a specific file
+- **GET /api/WordToJson/{file_id}**: Convert a document to JSON
 
-## Data Extraction Features
+## Development Notes
 
-The application extracts the following elements from Word documents:
-- Headers (section titles, sub-titles)
-- Text content (paragraphs and descriptions)
-- Tables (with row and column values)
-
-The extracted data is structured into a logical JSON format that preserves the document hierarchy.
-
-## Development
-
-### Running in Development Mode
+Instructions on how to run in dev mode:
 
 #### Backend
 ```
@@ -114,7 +102,7 @@ npm start
 
 ## Troubleshooting
 
-If you encounter issues with container conflicts during startup, you can remove all containers and try again:
+Run into issues with Docker containers? Try this quick fix:
 ```
 docker-compose down
 docker rm -f $(docker ps -a -q)
@@ -124,8 +112,3 @@ docker-compose up -d
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- This project was developed as part of a technical assessment
-- Uses open-source libraries and frameworks
