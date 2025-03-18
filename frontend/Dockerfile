@@ -6,14 +6,17 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies with legacy-peer-deps flag to handle React 18 compatibility
+# Install dependencies with legacy-peer-deps flag to handle any remaining conflicts
 RUN npm install --legacy-peer-deps
 
 # Copy all files
 COPY . .
 
+# Install specific version of ajv before building to fix the codegen module issue
+RUN npm install ajv@^7.0.0 --no-save
+
 # Build the React app
-RUN npm run build --legacy-peer-deps
+RUN npm run build
 
 # Production stage
 FROM nginx:stable
